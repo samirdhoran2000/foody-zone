@@ -5,7 +5,14 @@ import { searchArray,navigationArray  } from "./components/data";
 function App() {
 
   const searchList = searchArray.map((value) => {
-   return <li key={value.id} className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-zinc-700 active:bg-zinc-900 text-white">{value.name}</li>;
+   return (
+     <li
+       key={value.id}
+       className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-red-700 active:bg-zinc-900 text-white"
+     >
+       {value.name}
+     </li>
+   );
   });
   const navigationList = navigationArray.map((value) => {
    return (
@@ -38,7 +45,7 @@ function App() {
           </div>
         </TopContainer>
         <CategoryContainer className="flex justify-center my-2 ">
-          <ul className=" flex justify-between gap-4 bg-red-700 h-12 items-center p-6 rounded-lg">
+          <ul className=" flex justify-between gap-4 bg-zinc-700  h-12 items-center p-6 rounded-lg">
             {searchList}
           </ul>
         </CategoryContainer>
@@ -56,8 +63,8 @@ function App() {
               <button className="text-md px-1 rounded-md bg-red-500">
                 Rs. 22.00
               </button>
-          </div>
             </div>
+          </div>
         </CardContainer>
       </MainContainer>
     </>
