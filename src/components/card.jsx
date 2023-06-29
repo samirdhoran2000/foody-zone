@@ -1,20 +1,23 @@
+import { useContext } from 'react';
 import styled from 'styled-components'
 
-const Card = () => {
+
+const Card = (data) => {
+    useContext(() => { }, []);
+    console.log('data is printed ',data.data.id);
   return (
     <CardContainer className="hover:cursor-pointer m-2">
       <div className="w-52">
         <img src="../public/vite.svg" alt="image" width={100} />
       </div>
       <div className="flex-col place-items-center h-36 ">
-        <h2 className="text-2xl font-semibold text-white">Burger Pizza</h2>
+        <h2 className="text-2xl font-semibold text-white">{data.data.title}</h2>
         <p className="mt-2 text-white">
-          &nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Quia nisi rem asperiores cum?
+          &nbsp;&nbsp;&nbsp; {data.data.description}
         </p>
         <div className="flex  justify-end ">
           <button className="text-md px-1 rounded-md bg-red-500">
-            Rs. 22.00
+            Rs. {data.data.amount}
           </button>
         </div>
       </div>

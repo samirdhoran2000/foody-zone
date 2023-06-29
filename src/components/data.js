@@ -40,4 +40,42 @@ const navigationArray = [
   },
 ];
 
-export { searchArray, navigationArray };
+const foodArray = [
+    {
+        id: 1,
+        title: 'burger',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
+        amount: 22
+          
+    },
+    {
+        id: 2,
+        title: 'pizza',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
+        amount: 31
+          
+    },
+    {
+        id: 3,
+        title: 'chicken roll',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
+        amount: 52
+          
+    },
+    {
+        id: 4,
+        title: 'chicken roast',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
+        amount: 30
+          
+    },
+    {
+        id: 5,
+        title: 'pani puri',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
+        amount: 10
+          
+    },
+];
+
+export { searchArray, navigationArray, foodArray };
