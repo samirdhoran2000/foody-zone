@@ -11,12 +11,12 @@ const Card = (data) => {
         <img src="../public/vite.svg" alt="image" width={100} />
       </div>
       <div className="flex-col place-items-center h-36 ">
-        <h2 className="text-2xl font-semibold text-white">{data.data.title}</h2>
+        <h2 className="text-2xl font-semibold text-white capitalize">{data.data.title}</h2>
         <p className="mt-2 text-white">
           &nbsp;&nbsp;&nbsp; {data.data.description}
         </p>
         <div className="flex  justify-end ">
-          <button className="text-md px-1 rounded-md bg-red-500">
+          <button className="text-xl px-1 rounded-md bg-red-500 mt-5">
             Rs. {data.data.amount}
           </button>
         </div>
