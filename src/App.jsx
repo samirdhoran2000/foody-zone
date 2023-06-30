@@ -1,24 +1,43 @@
 import styled from "styled-components";
 import { searchArray, navigationArray, foodArray } from "./components/data";
 import Card from "./components/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [filterData, setFilterData] = useState(null);
+  const [data, setData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [selectedBtn, setSelectedBtn] = useState("all");
   
-  const onSearch = (e) => {
-    var searchValue = e.target.value;
+  useEffect(() => {
+    const fetchFoodData = () => {
+      setLoading(true);
+      try {
+        const response = foodArray;
+        setData(response);
+        setLoading(false);
+      } catch (error) {
+        setError('custom error ', error.message);
+      }
+    }
+    fetchFoodData()
+  }, []);
+
+  const searchFood = (e) => {
+    const searchValue = e.target.value;
     console.log(searchValue);
 
-    if (searchValue =='') {
-      setFilterData(null);
+    if (searchValue == "") {
+      setFilteredData(null);
     }
 
-    const filter = foodArray?.filter((value) =>
-      value.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
-    setFilterData(filter);
-  };
+    const filter = data?.filter((food) => food.title.toLowerCase().includes(searchValue.toLowerCase()))
+    setFilteredData(filter)
+  }
+
+
+  //............................................................................................
   const searchList = searchArray.map((value) => {
     return (
       <li
@@ -40,9 +59,16 @@ function App() {
     );
   });
 
-  const cardList = filterData?.map((value) => {
+  const cardList = filteredData?.map((value) => {
     return <Card key={value.id} data={value}></Card>;
   });
+//......................................
+  if (error) {
+    return <div>{ error }</div>
+  }
+  if (loading) {
+    return <div> loading ....</div>
+  }
   return (
     <>
       <MainContainer>
@@ -50,7 +76,8 @@ function App() {
           <div>
             <h1 className="text-4xl ">
               {" "}
-              F<span className="text-white">oo</span>dy Z<span className="text-white">o</span>ne
+              F<span className="text-white">oo</span>dy Z
+              <span className="text-white">o</span>ne
             </h1>
           </div>
           <div>
@@ -63,7 +90,7 @@ function App() {
               className="bg-transparent border-2 border-solid border-black h-8 w-60 rounded-xl px-3"
               type="text"
               placeholder="  Type to Search"
-              onChange={onSearch}
+              onChange={searchFood}
             />
           </div>
         </TopContainer>

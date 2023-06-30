@@ -1,10 +1,7 @@
-import { useContext } from 'react';
 import styled from 'styled-components'
 
 
 const Card = (data) => {
-    useContext(() => { }, []);
-    console.log('data is printed ',data.data.id);
   return (
     <CardContainer className="hover:cursor-pointer m-2">
       <div className="w-52">
