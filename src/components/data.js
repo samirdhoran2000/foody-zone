@@ -41,41 +41,46 @@ const navigationArray = [
 ];
 
 const foodArray = [
-    {
-        id: 1,
-        title: 'burger',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
-        amount: 22
-          
-    },
-    {
-        id: 2,
-        title: 'pizza',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
-        amount: 31
-          
-    },
-    {
-        id: 3,
-        title: 'chicken roll',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
-        amount: 52
-          
-    },
-    {
-        id: 4,
-        title: 'chicken roast',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
-        amount: 30
-          
-    },
-    {
-        id: 5,
-        title: 'pani puri',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?',
-        amount: 10
-          
-    },
+  {
+    id: 1,
+    type: "Lunch",
+    title: "burger",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 22,
+  },
+  {
+    id: 2,
+    type: "Break Fast",
+    title: "pizza",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 31,
+  },
+  {
+    id: 3,
+    type: "Lunch",
+    title: "chicken roll",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 52,
+  },
+  {
+    id: 4,
+    type: "Dinner",
+    title: "chicken roast",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 30,
+  },
+  {
+    id: 5,
+    type: "Break Fast",
+    title: "pani puri",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 10,
+  },
 ];
 
 export { searchArray, navigationArray, foodArray };
