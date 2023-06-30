@@ -1,8 +1,24 @@
 import styled from "styled-components";
 import { searchArray, navigationArray, foodArray } from "./components/data";
 import Card from "./components/Card";
+import { useState } from "react";
 
 function App() {
+  const [filterData, setFilterData] = useState(null);
+  
+  const onSearch = (e) => {
+    var searchValue = e.target.value;
+    console.log(searchValue);
+
+    if (searchValue =='') {
+      setFilterData(null);
+    }
+
+    const filter = foodArray?.filter((value) =>
+      value.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilterData(filter);
+  };
   const searchList = searchArray.map((value) => {
     return (
       <li
@@ -24,7 +40,7 @@ function App() {
     );
   });
 
-  const cardList = foodArray.map((value) => {
+  const cardList = filterData?.map((value) => {
     return <Card key={value.id} data={value}></Card>;
   });
   return (
@@ -47,6 +63,7 @@ function App() {
               className="bg-transparent border-2 border-solid border-black h-8 w-60 rounded-xl px-3"
               type="text"
               placeholder="  Type to Search"
+              onChange={onSearch}
             />
           </div>
         </TopContainer>
