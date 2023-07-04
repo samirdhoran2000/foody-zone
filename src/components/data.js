@@ -81,6 +81,30 @@ const foodArray = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 10,
   },
+  {
+    id: 6,
+    title: "Kachori",
+    type: "veg",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 5,
+  },
+  {
+    id: 7,
+    title: "Panir",
+    type: "veg",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 87,
+  },
+  {
+    id: 8,
+    title: "Puran Poli",
+    type: "veg",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+    amount: 100,
+  },
 ];
 
 const delay = (ms) => {
@@ -90,7 +114,7 @@ const delay = (ms) => {
 
 
 const getDelayedData = async () => {
-  await delay(4000);
+  await delay(100);
   return foodArray;
 };
 

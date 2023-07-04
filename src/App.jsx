@@ -1,5 +1,9 @@
-import styled, { keyframes} from "styled-components";
-import { searchArray, navigationArray, getDelayedData } from "./components/data";
+import styled, { keyframes } from "styled-components";
+import {
+  searchArray,
+  navigationArray,
+  getDelayedData,
+} from "./components/data";
 import Card from "./components/Card";
 import { useEffect, useState } from "react";
 
@@ -8,22 +12,24 @@ function App() {
   const [filteredData, setFilteredData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [selectedBtn, setSelectedBtn] = useState("all");
-  
+  const [selectedBtn, setSelectedBtn] = useState("All");
+
   useEffect(() => {
-    const fetchFoodData = async() => {
+    const fetchFoodData = async () => {
       setLoading(true);
       try {
-
-        const data = await getDelayedData();
-        console.log(data);
-        setData(data);
+        const commingData = await getDelayedData();
+        console.log(commingData);
+        setData(commingData);
+        setFilteredData(commingData);
         setLoading(false);
       } catch (error) {
-        setError('custom error ', error.message);
+        setError("custom error ", error.message);
       }
-    }
-    fetchFoodData()
+    };
+    fetchFoodData();
+    
+    
   }, []);
 
   const searchFood = (e) => {
@@ -34,24 +40,29 @@ function App() {
       setFilteredData(null);
     }
 
-    const filter = data?.filter((food) => food.title.toLowerCase().includes(searchValue.toLowerCase()))
-    setFilteredData(filter)
-  }
+    const filter = data?.filter((food) =>
+      food.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredData(filter);
+  };
 
   const filteredFood = (type) => {
+    console.log("type is ", type);
+    if (type == "All") {
 
-    console.log('type is ', type);
-    if (type == 'all') {
-       setFilteredData(data);
-       setSelectedBtn('all');
-       return;
-     }
-    
-    const filter = data?.filter((food) => food.type.toLowerCase().includes(type.toLowerCase()));
+      console.log('filter data is ', data);
+      setFilteredData(data);
+      setSelectedBtn("All");
+      return;
+    }
+
+    const filter = data?.filter((food) =>
+      food.type.toLowerCase().includes(type.toLowerCase())
+    );
     setFilteredData(filter);
     setSelectedBtn(type);
     console.log(type);
-  }
+  };
 
   //............................................................................................
   const searchList = searchArray.map((value) => {
@@ -59,7 +70,9 @@ function App() {
       <button
         key={value.id}
         className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-red-700 active:bg-zinc-900 text-white"
-        onClick={() => { filteredFood(value.name); }}
+        onClick={() => {
+          filteredFood(value.name);
+        }}
       >
         {value.name}
       </button>
@@ -79,14 +92,14 @@ function App() {
   const cardList = filteredData?.map((value) => {
     return <Card key={value.id} data={value}></Card>;
   });
-//..................................................................................................
+  //..................................................................................................
   if (error) {
-    return <div>{ error }</div>
+    return <div>{error}</div>;
   }
   if (loading) {
     return (
       <SpinnerWrapper>
-      <Spinner />
+        <Spinner />
       </SpinnerWrapper>
     );
   }
@@ -134,13 +147,11 @@ const MainContainer = styled.div``;
 
 const TopContainer = styled.div``;
 
-const CategoryContainer = styled.div`
-
-`;
+const CategoryContainer = styled.div``;
 
 const CardContainer = styled.div``;
 
-const spinnerSize=100;
+const spinnerSize = 100;
 const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -153,7 +164,7 @@ const Spinner = styled.div`
   border: 4px solid #f3f3f3;
   border-top: 4px solid #3498db;
   border-radius: 50%;
-  align-items:center;
+  align-items: center;
   animation: ${spinAnimation} 1s linear infinite;
 `;
 
