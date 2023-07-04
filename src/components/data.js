@@ -54,7 +54,7 @@ const foodArray = [
     type: "Break Fast",
     title: "pizza",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+      "ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 31,
   },
   {
@@ -62,7 +62,7 @@ const foodArray = [
     type: "Lunch",
     title: "chicken roll",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+      "dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 52,
   },
   {
@@ -70,7 +70,7 @@ const foodArray = [
     type: "Dinner",
     title: "chicken roast",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+      " sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 30,
   },
   {
@@ -86,7 +86,7 @@ const foodArray = [
     title: "Kachori",
     type: "veg",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+      "ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 5,
   },
   {
@@ -94,7 +94,7 @@ const foodArray = [
     title: "Panir",
     type: "veg",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
+      "dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 87,
   },
   {
@@ -114,7 +114,7 @@ const delay = (ms) => {
 
 
 const getDelayedData = async () => {
-  await delay(100);
+  await delay(1000);
   return foodArray;
 };
 

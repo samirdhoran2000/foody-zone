@@ -49,7 +49,6 @@ function App() {
   const filteredFood = (type) => {
     console.log("type is ", type);
     if (type == "All") {
-
       console.log('filter data is ', data);
       setFilteredData(data);
       setSelectedBtn("All");
@@ -62,6 +61,7 @@ function App() {
     setFilteredData(filter);
     setSelectedBtn(type);
     console.log(type);
+    console.log('setlected btn is ', selectedBtn);
   };
 
   //............................................................................................
@@ -69,6 +69,9 @@ function App() {
     return (
       <button
         key={value.id}
+        style={{
+          backgroundColor: selectedBtn === value.name ? "black" : "#b91c1c",
+        }}
         className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-red-700 active:bg-zinc-900 text-white"
         onClick={() => {
           filteredFood(value.name);
