@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import  './App.css'
 import {
   searchArray,
   navigationArray,
@@ -12,7 +13,7 @@ function App() {
   const [filteredData, setFilteredData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [selectedBtn, setSelectedBtn] = useState("All");
+  const [selectedBtn, setSelectedBtn] = useState("all");
 
   useEffect(() => {
     const fetchFoodData = async () => {
@@ -48,10 +49,10 @@ function App() {
 
   const filteredFood = (type) => {
     console.log("type is ", type);
-    if (type == "All") {
+    if (type == "all") {
       console.log('filter data is ', data);
       setFilteredData(data);
-      setSelectedBtn("All");
+      setSelectedBtn("all");
       return;
     }
 
@@ -71,8 +72,9 @@ function App() {
         key={value.id}
         style={{
           backgroundColor: selectedBtn === value.name ? "black" : "#b91c1c",
+          border: selectedBtn === value.name ? "1px solid white" : "none",
         }}
-        className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-red-700 active:bg-zinc-900 text-white"
+        className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-red-700 active:bg-zinc-900 capitalize text-white"
         onClick={() => {
           filteredFood(value.name);
         }}
@@ -85,7 +87,7 @@ function App() {
     return (
       <li
         key={value.id}
-        className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-zinc-700 active:bg-zinc-900 text-white"
+        className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-zinc-700 capitalize active:bg-zinc-900 text-white"
       >
         {value.name}
       </li>
@@ -124,10 +126,13 @@ function App() {
           </div>
           <div>
             <input
-              className="bg-transparent border-2 border-solid border-black h-8 w-60 rounded-xl px-3"
+              className="bg-transparent border-2 border-solid border-black h-8 w-60 rounded-xl px-3 custom-placeholder"
               type="text"
-              placeholder="  Type to Search"
+              placeholder="Type to Search"
               onChange={searchFood}
+              style={{
+                
+              }}
             />
           </div>
         </TopContainer>

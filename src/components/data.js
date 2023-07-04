@@ -1,57 +1,57 @@
+const navigationArray = [
+  {
+    id: 1,
+    name: "home",
+  },
+  {
+    id: 2,
+    name: "explore",
+  },
+  {
+    id: 3,
+    name: "about us",
+  },
+  {
+    id: 4,
+    name: "contact us",
+  },
+];
 const searchArray = [
   {
-    name: "All",
+    name: "all",
     id: 1,
   },
   {
-    name: "Break Fast",
+    name: "break fast",
     id: 2,
   },
   {
-    name: "Lunch",
+    name: "lunch",
     id: 3,
   },
   {
-    name: "Dinner",
+    name: "dinner",
     id: 4,
   },
   {
-    name: "Veg",
+    name: "veg",
     id: 5,
   },
 ];
 
-const navigationArray = [
-  {
-    id: 1,
-    name: "Home",
-  },
-  {
-    id: 2,
-    name: "Explore",
-  },
-  {
-    id: 3,
-    name: "About Us",
-  },
-  {
-    id: 4,
-    name: "Contact Us",
-  },
-];
 
 const foodArray = [
   {
     id: 1,
-    type: "Lunch",
     title: "burger",
+    type: searchArray[2]["name"],
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 22,
   },
   {
     id: 2,
-    type: "Break Fast",
+    type: searchArray[1]["name"],
     title: "pizza",
     description:
       "ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
@@ -59,15 +59,15 @@ const foodArray = [
   },
   {
     id: 3,
-    type: "Lunch",
     title: "chicken roll",
+    type: searchArray[2]["name"],
     description:
       "dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 52,
   },
   {
     id: 4,
-    type: "Dinner",
+    type: searchArray[3]["name"],
     title: "chicken roast",
     description:
       " sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
@@ -75,7 +75,7 @@ const foodArray = [
   },
   {
     id: 5,
-    type: "Break Fast",
+    type: searchArray[1]["name"],
     title: "pani puri",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
@@ -84,7 +84,7 @@ const foodArray = [
   {
     id: 6,
     title: "Kachori",
-    type: "veg",
+    type: searchArray[4]['name'],
     description:
       "ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 5,
@@ -92,7 +92,7 @@ const foodArray = [
   {
     id: 7,
     title: "Panir",
-    type: "veg",
+    type: searchArray[4]['name'],
     description:
       "dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 87,
@@ -100,7 +100,7 @@ const foodArray = [
   {
     id: 8,
     title: "Puran Poli",
-    type: "veg",
+    type: searchArray[4]['name'],
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Quia nisi rem asperiores cum?",
     amount: 100,
