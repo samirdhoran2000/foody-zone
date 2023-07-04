@@ -1,21 +1,23 @@
-import styled from "styled-components";
-import { searchArray, navigationArray, foodArray } from "./components/data";
+import styled, { keyframes} from "styled-components";
+import { searchArray, navigationArray, getDelayedData } from "./components/data";
 import Card from "./components/Card";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const [filteredData, setFilteredData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [selectedBtn, setSelectedBtn] = useState("all");
   
   useEffect(() => {
-    const fetchFoodData = () => {
+    const fetchFoodData = async() => {
       setLoading(true);
       try {
-        const response = foodArray;
-        setData(response);
+
+        const data = await getDelayedData();
+        console.log(data);
+        setData(data);
         setLoading(false);
       } catch (error) {
         setError('custom error ', error.message);
@@ -36,16 +38,31 @@ function App() {
     setFilteredData(filter)
   }
 
+  const filteredFood = (type) => {
+
+    console.log('type is ', type);
+    if (type == 'all') {
+       setFilteredData(data);
+       setSelectedBtn('all');
+       return;
+     }
+    
+    const filter = data?.filter((food) => food.type.toLowerCase().includes(type.toLowerCase()));
+    setFilteredData(filter);
+    setSelectedBtn(type);
+    console.log(type);
+  }
 
   //............................................................................................
   const searchList = searchArray.map((value) => {
     return (
-      <li
+      <button
         key={value.id}
         className="px-4 py-2 rounded-lg hover:cursor-pointer hover:bg-red-700 active:bg-zinc-900 text-white"
+        onClick={() => { filteredFood(value.name); }}
       >
         {value.name}
-      </li>
+      </button>
     );
   });
   const navigationList = navigationArray.map((value) => {
@@ -62,12 +79,16 @@ function App() {
   const cardList = filteredData?.map((value) => {
     return <Card key={value.id} data={value}></Card>;
   });
-//......................................
+//..................................................................................................
   if (error) {
     return <div>{ error }</div>
   }
   if (loading) {
-    return <div> loading ....</div>
+    return (
+      <SpinnerWrapper>
+      <Spinner />
+      </SpinnerWrapper>
+    );
   }
   return (
     <>
@@ -113,6 +134,32 @@ const MainContainer = styled.div``;
 
 const TopContainer = styled.div``;
 
-const CategoryContainer = styled.div``;
+const CategoryContainer = styled.div`
+
+`;
 
 const CardContainer = styled.div``;
+
+const spinnerSize=100;
+const spinAnimation = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const Spinner = styled.div`
+  display: inline-block;
+  width: ${spinnerSize}px;
+  height: ${spinnerSize}px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  align-items:center;
+  animation: ${spinAnimation} 1s linear infinite;
+`;
+
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;

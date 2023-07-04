@@ -83,4 +83,15 @@ const foodArray = [
   },
 ];
 
-export { searchArray, navigationArray, foodArray };
+const delay = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+
+
+const getDelayedData = async () => {
+  await delay(4000);
+  return foodArray;
+};
+
+export { searchArray, navigationArray, foodArray, getDelayedData };
